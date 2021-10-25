@@ -1,6 +1,6 @@
 import "./style.css";
 import Header from "./Header/Header";
-import Products from "./Products.js/Products";
+import Products from "./Products/Products";
 
 function App() {
   return (

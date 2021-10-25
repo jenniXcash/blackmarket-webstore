@@ -1,6 +1,6 @@
 export default function Header() {
   return (
-    <nav class="product-filter">
+    <nav className="product-filter">
       <h1>Jackets</h1>
 
       <div className="sort">
