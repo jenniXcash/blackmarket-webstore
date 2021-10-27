@@ -7,7 +7,7 @@ export default function Product(props) {
       </div>
       <div className="product-info">
         <h5>{props.title}</h5>
-        <h6>{props.price}</h6>
+        <h6>{props.price}$</h6>
       </div>
     </div>
   );

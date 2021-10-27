@@ -2,9 +2,12 @@ import "./Products.css";
 import Product from "../Product/Product";
 
 export default function Products(props) {
+  let sI = props.products.filter((e) => {
+    return e.category === props.currentCategory || !props.currentCategory;
+  });
   return (
     <section className="products">
-      {props.products.map(({ id, title, description, image, price }) => (
+      {sI.map(({ id, title, description, image, price, category }) => (
         <Product
           key={id}
           id={id}
@@ -13,6 +16,8 @@ export default function Products(props) {
           image={image}
           alt=""
           price={price}
+          products={props.products}
+          category={category}
         />
       ))}
     </section>

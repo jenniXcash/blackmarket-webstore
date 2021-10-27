@@ -1,6 +1,7 @@
 import "./App.css";
 import Header from "./Header/Header";
 import Products from "./Products/Products";
+import { useState } from "react";
 
 function App() {
   const productList = [
@@ -272,10 +273,19 @@ function App() {
     },
   ];
 
+  const [currentCategory, setCurrentCategory] = useState("");
+
+  function changeCurrentCategory(e) {
+    setCurrentCategory(e.target.value);
+    console.log(e.target.value);
+  }
   return (
     <span>
-      <Header />
-      <Products products={productList} />
+      <Header
+        products={productList}
+        changeCurrentCategory={changeCurrentCategory}
+      />
+      <Products products={productList} currentCategory={currentCategory} />
     </span>
   );
 }
