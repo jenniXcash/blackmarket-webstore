@@ -277,7 +277,6 @@ function App() {
 
   function changeCurrentCategory(e) {
     setCurrentCategory(e.target.value);
-    console.log(e.target.value);
   }
   return (
     <span>

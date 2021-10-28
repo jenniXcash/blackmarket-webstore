@@ -15,9 +15,12 @@ export default function Header(props) {
           <select
             onChange={(e) => {
               props.changeCurrentCategory(e);
+              console.log(e.target.value);
             }}
           >
-            <option>choose category</option>
+            <option key={"all"} value={""}>
+              All
+            </option>
             {categories.map((category, index) => (
               <option key={index} value={category}>
                 {category}
