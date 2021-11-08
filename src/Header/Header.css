@@ -26,3 +26,8 @@ label {
   line-height: 2em;
   text-transform: uppercase;
 }
+
+.shoppingCartIcon {
+  position: -webkit-sticky;
+  position: sticky;
+}
