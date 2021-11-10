@@ -1,15 +1,17 @@
 body {
   position: relative;
+  scroll-behavior: smooth;
 }
 
 .shoppingCartDiv {
   position: fixed;
   background-color: white;
-  height: 95vh;
+  height: 80vh;
   width: 30vw;
   padding: 0.5rem 1.25rem 1.25rem 1.25rem;
   border: 2px solid black;
   box-shadow: 0 0 10px #000000;
+  overflow: scroll;
 }
 
 .clossingX {
@@ -17,6 +19,12 @@ body {
   color: white;
   font-size: 1.25rem;
   margin: 0.625rem;
-  width: 20px;
-  text-align: center;
+  width: 25px;
+  height: 25px;
+  text-align: right;
+  bottom: 0;
+}
+
+.itemsInTheCart {
+  margin: 20px;
 }

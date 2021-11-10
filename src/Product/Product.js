@@ -46,7 +46,7 @@ export default function Product({ title, price, image, id }) {
       </div>
       <div className="productCardButtons">
         <button onClick={addItem}>+</button>
-        {product > 0 && product}
+        {product > 0 && <span>{product}</span>}
         {product > 0 && <button onClick={subtractItem}>-</button>}
       </div>
     </div>

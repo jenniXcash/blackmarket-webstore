@@ -22,7 +22,10 @@ export default function ShoppingCart({ toggleCart, cartState }) {
   function closeCart() {
     toggleCart(!cartState);
   }
-  const itemsArr = Object.keys(itemInCart).map((key) => [itemInCart[key]]);
+  let totalCost = 0;
+  for (let key in itemInCart) {
+    totalCost += itemInCart[key].price * itemInCart[key].amount;
+  }
 
   return (
     <React.Fragment>
@@ -35,14 +38,18 @@ export default function ShoppingCart({ toggleCart, cartState }) {
           X
         </div>
         <h1>Your cart: {total}</h1>
-        {Object.keys(itemInCart).map((key) => (
-          <ProductsInsideTheCart
-            title={itemInCart[key].title}
-            image={itemInCart[key].image}
-            price={itemInCart[key].price}
-            amount={itemInCart[key].amount}
-          />
-        ))}
+        <div>Your total cost: {totalCost.toFixed(2)}$</div>
+        <div className="itemsInTheCart">
+          {Object.keys(itemInCart).map((key) => (
+            <ProductsInsideTheCart
+              key={key}
+              title={itemInCart[key].title}
+              image={itemInCart[key].image}
+              price={itemInCart[key].price}
+              amount={itemInCart[key].amount}
+            />
+          ))}
+        </div>
       </div>
     </React.Fragment>
   );
