@@ -2,8 +2,8 @@ import "./App.css";
 import Header from "./Header/Header";
 import Products from "./Products/Products";
 import { useState, useEffect } from "react";
-import ShoppingCart from "./ShoppingCart/ShoppingCart";
 import ShoppingCartContext from "./contexts/ShoppingCartContext";
+import RangeValueContext from "./contexts/RangeValueContext";
 
 function App() {
   const [itemInCart, setItemInCart] = useState({});
@@ -11,6 +11,8 @@ function App() {
   const [productList, setProductList] = useState([]);
 
   const [currentCategory, setCurrentCategory] = useState("");
+
+  const [rangeValue, setRangeValue] = useState([]);
 
   useEffect(() => {
     const res = fetch("https://fakestoreapi.com/products");
@@ -22,7 +24,6 @@ function App() {
         setProductList(product);
       });
   });
-
   function changeCurrentCategory(e) {
     setCurrentCategory(e.target.value);
   }
@@ -30,12 +31,13 @@ function App() {
   return (
     <span>
       <ShoppingCartContext.Provider value={{ itemInCart, setItemInCart }}>
-        <Header
-          products={productList}
-          changeCurrentCategory={changeCurrentCategory}
-        />
-
-        <Products products={productList} currentCategory={currentCategory} />
+        <RangeValueContext.Provider value={(rangeValue, setRangeValue)}>
+          <Header
+            products={productList}
+            changeCurrentCategory={changeCurrentCategory}
+          />
+          <Products products={productList} currentCategory={currentCategory} />
+        </RangeValueContext.Provider>
       </ShoppingCartContext.Provider>
     </span>
   );

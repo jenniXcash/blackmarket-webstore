@@ -32,7 +32,11 @@ export default function Product({ title, price, image, id }) {
       setProduct(product - 1);
       currentProduct.amount = currentProduct.amount - 1;
       setItemInCart({ ...itemInCart, [id]: currentProduct });
+      if (currentProduct.amount === 0) {
+        delete itemInCart[id];
+      }
     }
+    console.log(itemInCart);
   }
 
   return (

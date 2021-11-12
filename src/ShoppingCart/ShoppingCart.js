@@ -38,7 +38,9 @@ export default function ShoppingCart({ toggleCart, cartState }) {
           X
         </div>
         <h1>Your cart: {total}</h1>
-        <div>Your total cost: {totalCost.toFixed(2)}$</div>
+        <div>
+          Your total cost: <u>{totalCost.toFixed(2)}$</u>
+        </div>
         <div className="itemsInTheCart">
           {Object.keys(itemInCart).map((key) => (
             <ProductsInsideTheCart

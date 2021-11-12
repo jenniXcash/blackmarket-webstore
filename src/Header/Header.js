@@ -1,14 +1,18 @@
 import react from "react";
+import RangeSlider from "../RangeSlider/RangeSlider";
 import "./Header.css";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import ShoppingCart from "../ShoppingCart/ShoppingCart";
+import RangeValueContext from "../contexts/RangeValueContext";
 
 export default function Header(props) {
+  //Using the state and toggleCart to control wether the shopping cart is open or closed
   const [cartState, setCart] = useState(false);
+
+  const { valueRange, setValueRange } = useContext(RangeValueContext);
 
   function toggleCart() {
     setCart(!cartState);
-    console.log(cartState);
   }
 
   const products = [...props.products];
@@ -21,7 +25,7 @@ export default function Header(props) {
       {cartState && <ShoppingCart toggleCart={setCart} cartState={cartState} />}
       <nav className="product-filter">
         <h1>Jackets</h1>
-
+        <RangeSlider products={props.products} />
         <div className="sort">
           <div className="collection-sort">
             <label>Filter by:</label>
