@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
 import { useContext, useState, useEffect } from "react/cjs/react.development";
 import RangeValueContext from "../contexts/RangeValueContext";
+import MinMaxPrices from "../contexts/MinMaxPrices";
 
 function valuetext(value) {
   return `${value}°C`;
@@ -10,14 +11,14 @@ function valuetext(value) {
 
 export default function RangeSlider({ products }) {
   const { rangeValue, setRangeValue } = useContext(RangeValueContext);
-  const priceArr = products.map((e) => e.price);
-  const maxPrice = Math.max(...priceArr);
-  const minPrice = Math.min(...priceArr);
+
+  const { minPrice, maxPrice } = useContext(MinMaxPrices);
 
   const [value, setValue] = useState([minPrice, maxPrice]);
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
-    console.log(value);
+    setRangeValue(newValue);
   };
 
   return (

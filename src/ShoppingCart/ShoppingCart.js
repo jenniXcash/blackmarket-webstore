@@ -15,6 +15,7 @@ export default function ShoppingCart({ toggleCart, cartState }) {
       return acc + amount;
     }, 0);
   };
+
   useEffect(() => {
     setTotal(getTotal());
   }, [itemInCart]);
