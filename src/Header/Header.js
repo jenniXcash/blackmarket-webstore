@@ -1,6 +1,7 @@
 import react from "react";
 import RangeSlider from "../RangeSlider/RangeSlider";
 import "./Header.css";
+import logo from "./shoppingCart.svg";
 import { useState, useContext } from "react";
 import ShoppingCart from "../ShoppingCart/ShoppingCart";
 import RangeValueContext from "../contexts/RangeValueContext";
@@ -62,10 +63,12 @@ export default function Header(props) {
         </div>
         <img
           className="shoppingCartIcon"
-          src="./shoppingCart.svg"
+          src={logo}
           alt="shopping cart"
           style={{ cursor: "pointer" }}
           onClick={toggleCart}
+          height="50px"
+          width="50px"
         />
       </nav>
     </react.Fragment>

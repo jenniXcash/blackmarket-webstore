@@ -5,7 +5,6 @@ import ShoppingCartContext from "../contexts/ShoppingCartContext";
 
 export default function ProductsInsideTheCart({ amount, title, price, image }) {
   const { itemInCart, setItemInCart } = useContext(ShoppingCartContext);
-
   return (
     <React.Fragment>
       {amount > 0 && (

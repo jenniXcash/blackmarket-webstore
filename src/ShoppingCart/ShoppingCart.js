@@ -7,7 +7,7 @@ import ProductsInsideTheCart from "../ProductsInsideTheCart/ProductsInsideTheCar
 export default function ShoppingCart({ toggleCart, cartState }) {
   const [total, setTotal] = useState(0);
 
-  const { itemInCart } = useContext(ShoppingCartContext);
+  const { itemInCart, setItemInCart } = useContext(ShoppingCartContext);
 
   const getTotal = () => {
     return Object.entries(itemInCart).reduce((acc, item) => {
@@ -28,6 +28,11 @@ export default function ShoppingCart({ toggleCart, cartState }) {
     totalCost += itemInCart[key].price * itemInCart[key].amount;
   }
 
+  const clearCart = () => {
+    setItemInCart({});
+    console.log(itemInCart);
+  };
+
   return (
     <React.Fragment>
       <div className="shoppingCartDiv">
@@ -38,10 +43,16 @@ export default function ShoppingCart({ toggleCart, cartState }) {
         >
           X
         </div>
-        <h1>Your cart: {total}</h1>
-        <div>
+        <h1>
+          {" "}
           Your total cost: <u>{totalCost.toFixed(2)}$</u>
-        </div>
+        </h1>
+        <div>Number of items: {total}</div>
+        {itemInCart && (
+          <button className="resetCart" onClick={clearCart}>
+            Empty cart
+          </button>
+        )}
         <div className="itemsInTheCart">
           {Object.keys(itemInCart).map((key) => (
             <ProductsInsideTheCart

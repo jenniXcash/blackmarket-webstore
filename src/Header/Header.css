@@ -30,4 +30,5 @@ label {
 .shoppingCartIcon {
   position: -webkit-sticky;
   position: sticky;
+  right: 0px;
 }
