@@ -1,12 +1,12 @@
-import "./App.css";
-import Header from "./Header/Header";
-import Products from "./Products/Products";
+import "./Home.css";
+import Header from "../../Header/Header";
+import Products from "../../Products/Products";
 import { useState, useEffect } from "react";
-import ShoppingCartContext from "./contexts/ShoppingCartContext";
-import RangeValueContext from "./contexts/RangeValueContext";
-import MinMaxPrices from "./contexts/MinMaxPrices";
+import ShoppingCartContext from "../../contexts/ShoppingCartContext";
+import RangeValueContext from "../../contexts/RangeValueContext";
+import MinMaxPrices from "../../contexts/MinMaxPrices";
 
-function App() {
+function Home() {
   const [itemInCart, setItemInCart] = useState({});
 
   const [productList, setProductList] = useState([]);
@@ -14,7 +14,7 @@ function App() {
   const [currentCategory, setCurrentCategory] = useState("");
 
   useEffect(() => {
-    const res = fetch("https://fakestoreapi.com/products");
+    const res = fetch("http://localhost:8000/product");
     res
       .then(function (response) {
         return response.json();
@@ -54,4 +54,4 @@ function App() {
   );
 }
 
-export default App;
+export default Home;

@@ -1,23 +1,24 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useState, useContext, useEffect } from "react/cjs/react.development";
 import ShoppingCartContext from "../contexts/ShoppingCartContext";
 
 import "./Product.css";
 
-export default function Product({ title, price, image, id }) {
+export default function Product({ title, price, image, id: _id }) {
   const { itemInCart, setItemInCart } = useContext(ShoppingCartContext);
 
   const [product, setProduct] = useState(0);
 
   useEffect(() => {
     if (product === 0) {
-      delete itemInCart[id];
+      delete itemInCart[_id];
     }
   });
 
   function addItem() {
     setProduct(product + 1);
-    const currentProduct = itemInCart[id] || {
+    const currentProduct = itemInCart[_id] || {
       amount: product,
       title,
       price,
@@ -25,11 +26,11 @@ export default function Product({ title, price, image, id }) {
     };
 
     currentProduct.amount = currentProduct.amount + 1;
-    setItemInCart({ ...itemInCart, [id]: currentProduct });
+    setItemInCart({ ...itemInCart, [_id]: currentProduct });
   }
   function subtractItem() {
     if (product > 0) {
-      const currentProduct = itemInCart[id] || {
+      const currentProduct = itemInCart[_id] || {
         amount: product,
         title,
         price,
@@ -37,7 +38,7 @@ export default function Product({ title, price, image, id }) {
       };
       setProduct(product - 1);
       currentProduct.amount = currentProduct.amount - 1;
-      setItemInCart({ ...itemInCart, [id]: currentProduct });
+      setItemInCart({ ...itemInCart, [_id]: currentProduct });
       // if (currentProduct.amount === 0) {
       //   delete itemInCart[id];
       // }
@@ -49,7 +50,9 @@ export default function Product({ title, price, image, id }) {
   return (
     <div className="product-card">
       <div className="product-image">
-        <img src={image} alt="" />
+        <Link to={`/SingleProductDescPage/`}>
+          <img src={image} alt="" />
+        </Link>
       </div>
       <div className="product-info">
         <h5>{title}</h5>

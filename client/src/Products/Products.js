@@ -18,10 +18,10 @@ export default function Products(props) {
   return (
     <section className="products">
       {selectedItems.map(
-        ({ id, title, description, image, price, category }) => (
+        ({ _id, title, description, image, price, category }) => (
           <Product
-            key={id}
-            id={id}
+            key={_id}
+            id={_id}
             title={title}
             description={description}
             image={image}
