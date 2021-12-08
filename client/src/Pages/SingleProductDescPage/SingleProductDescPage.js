@@ -10,13 +10,11 @@ export default function SingleProductDescPage() {
       .then((data) => data.json())
       .then((data) => setProduct(data));
   }, [id]);
-
   console.log(id);
-  console.log(product);
 
   return (
     <React.Fragment>
-      <div>{product.title}</div>
+      <div>{id}</div>
     </React.Fragment>
   );
 }

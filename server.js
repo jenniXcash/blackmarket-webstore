@@ -87,9 +87,9 @@ async function initProducts() {
   }
 }
 
-// app.get("*", (req, res) => {
-//   res.sendFile(__dirname + "/client/build/index.html");
-// });
+app.get("*", (req, res) => {
+  res.sendFile(__dirname + "/client/build/index.html");
+});
 
 const { DB_USER, DB_PASS, DB_HOST, DB_NAME } = process.env;
 
