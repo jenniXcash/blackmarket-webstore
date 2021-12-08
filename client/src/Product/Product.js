@@ -50,7 +50,7 @@ export default function Product({ title, price, image, id: _id }) {
   return (
     <div className="product-card">
       <div className="product-image">
-        <Link to={`/SingleProductDescPage/`}>
+        <Link to={`/SingleProductDescPage/${_id}`}>
           <img src={image} alt="" />
         </Link>
       </div>

@@ -15,5 +15,5 @@ export default function SingleProductDescPage() {
       });
   }, [id]);
 
-  return <div>bla</div>;
+  return <div>bla bla</div>;
 }
