@@ -19,7 +19,7 @@ const Album = mongoose.model("Album", {
   image: { type: String, required: true },
 });
 
-app.use(express.static("client/build"));
+app.use(Express.static("client/build"));
 
 app.get("/api/products", async (req, res) => {
   const { term } = req.query;
