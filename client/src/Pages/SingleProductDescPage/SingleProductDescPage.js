@@ -7,14 +7,12 @@ export default function SingleProductDescPage() {
 
   useEffect(() => {
     fetch(`/api/products/${id}`)
-      .then((data) => data.json())
-      .then((data) => setProduct(data));
+      .then((res) => res.json())
+      .then((product) => setProduct(product));
   }, [id]);
-  console.log(id);
+  console.log(product);
 
   return (
-    <React.Fragment>
-      <div>{id}</div>
-    </React.Fragment>
+    <React.Fragment>{product && <div>{product.title}</div>}</React.Fragment>
   );
 }
