@@ -19,7 +19,7 @@ const Album = mongoose.model("Album", {
   image: { type: String, required: true },
 });
 
-app.get("/product", async (req, res) => {
+app.get("/products", async (req, res) => {
   const { term } = req.query;
 
   try {
@@ -33,7 +33,7 @@ app.get("/product", async (req, res) => {
   }
 });
 
-app.get("/product/:id", async (req, res) => {
+app.get("/products/:id", async (req, res) => {
   const { id } = req.params;
   try {
     console.log(id);
@@ -43,7 +43,7 @@ app.get("/product/:id", async (req, res) => {
   }
 });
 
-app.post("/product", async (req, res) => {
+app.post("/products", async (req, res) => {
   const { title, description, category, price, image } = req.body;
 
   const addAlbum = new Album({
@@ -58,7 +58,7 @@ app.post("/product", async (req, res) => {
   res.send(await addAlbum);
 });
 
-app.put("/product/:id", async (req, res) => {
+app.put("/products/:id", async (req, res) => {
   const { id } = req.params;
   const body = req.body;
 
@@ -67,7 +67,7 @@ app.put("/product/:id", async (req, res) => {
   res.send(await Album.find());
 });
 
-app.delete("/product/:id", async (req, res) => {
+app.delete("/products/:id", async (req, res) => {
   const { id } = req.params;
   console.log(id);
   await Album.findByIdAndDelete(id);
