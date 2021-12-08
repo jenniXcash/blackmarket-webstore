@@ -14,7 +14,7 @@ function Home() {
   const [currentCategory, setCurrentCategory] = useState("");
 
   useEffect(() => {
-    const res = fetch("http://localhost:8000/product");
+    const res = fetch("http://localhost:8000/products");
     res
       .then(function (response) {
         return response.json();

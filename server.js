@@ -19,7 +19,9 @@ const Album = mongoose.model("Album", {
   image: { type: String, required: true },
 });
 
-app.get("/products", async (req, res) => {
+app.use(express.static("client/build"));
+
+app.get("/api/products", async (req, res) => {
   const { term } = req.query;
 
   try {
@@ -33,7 +35,7 @@ app.get("/products", async (req, res) => {
   }
 });
 
-app.get("/products/:id", async (req, res) => {
+app.get("/api/products:id", async (req, res) => {
   const { id } = req.params;
   try {
     console.log(id);
@@ -43,7 +45,7 @@ app.get("/products/:id", async (req, res) => {
   }
 });
 
-app.post("/products", async (req, res) => {
+app.post("/api/products", async (req, res) => {
   const { title, description, category, price, image } = req.body;
 
   const addAlbum = new Album({
@@ -58,7 +60,7 @@ app.post("/products", async (req, res) => {
   res.send(await addAlbum);
 });
 
-app.put("/products/:id", async (req, res) => {
+app.put("/api/products:id", async (req, res) => {
   const { id } = req.params;
   const body = req.body;
 
@@ -67,7 +69,7 @@ app.put("/products/:id", async (req, res) => {
   res.send(await Album.find());
 });
 
-app.delete("/products/:id", async (req, res) => {
+app.delete("/api/products:id", async (req, res) => {
   const { id } = req.params;
   console.log(id);
   await Album.findByIdAndDelete(id);
@@ -83,6 +85,10 @@ async function initProducts() {
     await Album.insertMany(products);
   }
 }
+
+app.get("*", (req, res) => {
+  res.sendFile(__dirname + "/client/build/index.html");
+});
 
 const { DB_USER, DB_PASS, DB_HOST, DB_NAME } = process.env;
 

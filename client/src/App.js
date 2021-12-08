@@ -11,7 +11,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route
-          path="/SingleProductDescPage"
+          path="/SingleProductDescPage/:id"
           element={<SingleProductDescPage />}
         />
       </Routes>
