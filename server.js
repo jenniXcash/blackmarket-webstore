@@ -28,6 +28,7 @@ app.get("/product", async (req, res) => {
     }
     res.send(await Album.find());
   } catch (e) {
+    console.log("error", e);
     throw e;
   }
 });
