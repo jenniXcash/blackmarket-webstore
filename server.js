@@ -35,8 +35,9 @@ app.get("/api/products", async (req, res) => {
   }
 });
 
-app.get("/api/products:id", async (req, res) => {
+app.get("/api/products/:id", async (req, res) => {
   const { id } = req.params;
+  console.log(id);
   try {
     console.log(id);
     res.send(await Album.findById(id));
@@ -86,9 +87,9 @@ async function initProducts() {
   }
 }
 
-app.get("*", (req, res) => {
-  res.sendFile(__dirname + "/client/build/index.html");
-});
+// app.get("*", (req, res) => {
+//   res.sendFile(__dirname + "/client/build/index.html");
+// });
 
 const { DB_USER, DB_PASS, DB_HOST, DB_NAME } = process.env;
 

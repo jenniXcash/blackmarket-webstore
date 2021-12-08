@@ -25,7 +25,7 @@ export default function Header(props) {
     <react.Fragment>
       {cartState && <ShoppingCart toggleCart={setCart} cartState={cartState} />}
       <nav className="product-filter">
-        <h1>Jackets</h1>
+        <h1>Black Market</h1>
         <RangeSlider products={props.products} />
         <div className="sort">
           <div className="collection-sort">
