@@ -15,7 +15,7 @@ export default function SingleProductDescPage() {
   return (
     <React.Fragment>
       <div className="productPageFlex">
-        {product && <div>{product.title}</div>}
+        {product && <h1>{product.title}</h1>}
         {product && (
           <div>
             <img src={product.image} />

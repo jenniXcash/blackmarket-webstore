@@ -3,6 +3,11 @@ import fetch from "node-fetch";
 import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
+import { fileURLToPath } from "url";
+import { dirname } from "path";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 dotenv.config();
 
@@ -23,7 +28,6 @@ app.use(Express.static("client/build"));
 
 app.get("/api/products", async (req, res) => {
   const { term } = req.query;
-
   try {
     if (term) {
       res.send(await Album.find({ title: { $regex: term, $options: "gi" } }));
