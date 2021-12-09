@@ -13,6 +13,18 @@ export default function SingleProductDescPage() {
   console.log(product);
 
   return (
-    <React.Fragment>{product && <div>{product.title}</div>}</React.Fragment>
+    <React.Fragment>
+      <div className="productPageFlex">
+        {product && <div>{product.title}</div>}
+        {product && (
+          <div>
+            <img src={product.image} />
+          </div>
+        )}
+        {product && <div>{product.description}</div>}
+        {product && <div>{product.category}</div>}
+        {product && <div>{product.price} USD</div>}
+      </div>
+    </React.Fragment>
   );
 }
