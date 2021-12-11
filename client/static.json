@@ -1,0 +1,7 @@
+$ cd MY-APP
+$ echo '{
+  "root": "build/",
+  "routes": {
+    "/**": "index.html"
+  }
+}' > static.json
