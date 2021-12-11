@@ -65,7 +65,7 @@ app.post("/api/products", async (req, res) => {
   res.send(await addAlbum);
 });
 
-app.put("/api/products:id", async (req, res) => {
+app.put("/api/products/:id", async (req, res) => {
   const { id } = req.params;
   const body = req.body;
 
@@ -74,7 +74,7 @@ app.put("/api/products:id", async (req, res) => {
   res.send(await Album.find());
 });
 
-app.delete("/api/products:id", async (req, res) => {
+app.delete("/api/products/:id", async (req, res) => {
   const { id } = req.params;
   console.log(id);
   await Album.findByIdAndDelete(id);
