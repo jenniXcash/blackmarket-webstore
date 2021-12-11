@@ -11,7 +11,6 @@ export default function Header(props) {
   const [cartState, setCart] = useState(false);
 
   const { valueRange, setValueRange } = useContext(RangeValueContext);
-
   function toggleCart() {
     setCart(!cartState);
   }
